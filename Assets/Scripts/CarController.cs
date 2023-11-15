@@ -5,6 +5,7 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     public float carSpeed;
+    private bool rotated = false;
 
     // Start is called before the first frame update
     void Start()
@@ -15,11 +16,30 @@ public class CarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();   
+        MoveCar();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            RotateCar();
+        }
     }
 
-    void Move()
+    void MoveCar()
     {
         transform.position += transform.forward * carSpeed * Time.deltaTime;
+    }
+
+    void RotateCar()
+    {
+        if(rotated)
+        {
+            transform.rotation = Quaternion.Euler(0, 90, 0);
+            rotated = false;
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            rotated = true;
+        }
     }
 }
