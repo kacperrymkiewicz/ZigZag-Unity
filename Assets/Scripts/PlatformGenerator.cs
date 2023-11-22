@@ -6,19 +6,30 @@ public class PlatformGenerator : MonoBehaviour
 {
     public GameObject platformPrefab;
     public Transform lastPlatform;
+    public float spawnInterval = 1.0f;
     Vector3 lastPlatformPosition;
     Vector3 newPlatformPosition;
 
     // Start is called before the first frame update
     void Start()
     {
-        lastPlatformPosition = lastPlatform.position;   
+        lastPlatformPosition = lastPlatform.position;
+        StartCoroutine(spawnPlatformCoroutine());
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    IEnumerator spawnPlatformCoroutine()
+    {
+        while (true)
+        {
+            spawnPlatform();
+            yield return new WaitForSeconds(spawnInterval);
+        }
     }
 
     void spawnPlatform()
