@@ -16,11 +16,14 @@ public class CarController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveCar();
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (GameManager.instance.gameStarted)
         {
-            RotateCar();
+            MoveCar();
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                RotateCar();
+            }
         }
     }
 

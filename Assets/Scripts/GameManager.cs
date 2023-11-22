@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public bool gameStarted;
 
-
     private void Awake()
     {
         if(instance == null) 
