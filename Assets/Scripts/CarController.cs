@@ -25,6 +25,11 @@ public class CarController : MonoBehaviour
                 RotateCar();
             }
         }
+
+        if(transform.position.y < 0)
+        {
+            GameManager.instance.GameOver();
+        }
     }
 
     void MoveCar()

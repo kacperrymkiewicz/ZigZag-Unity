@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
 
     public static GameManager instance;
+    public GameObject platformGenerator;
     public bool gameStarted;
 
     private void Awake()
@@ -35,10 +36,11 @@ public class GameManager : MonoBehaviour
     public void GameStart()
     {
         gameStarted = true;
+        platformGenerator.SetActive(true);
     }
 
     public void GameOver()
     {
-
+        platformGenerator.SetActive(false);
     }
 }
