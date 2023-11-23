@@ -26,7 +26,7 @@ public class Platform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Invoke("RemovePlatform", 0.3f);
+            Invoke("RemovePlatform", 0.2f);
         }
     }
 }
