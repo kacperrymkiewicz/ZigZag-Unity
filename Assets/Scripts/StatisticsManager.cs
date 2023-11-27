@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class StatisticsManager : MonoBehaviour
@@ -7,6 +8,7 @@ public class StatisticsManager : MonoBehaviour
     public static StatisticsManager instance;
     private int currentScore = 0;
     private int bestScore = 0;
+    public TMP_Text currentScoreText;
 
     private void Awake()
     {
@@ -27,6 +29,7 @@ public class StatisticsManager : MonoBehaviour
     public void increaseScore(int value)
     {
         currentScore += value;
+        currentScoreText.text = currentScore.ToString();
 
         if (currentScore > bestScore)
         {
