@@ -6,6 +6,7 @@ public class CarController : MonoBehaviour
 {
     public float carSpeed;
     private bool rotated = false;
+    private bool firstTap = true;
     private GameManager gameManager;
 
     // Start is called before the first frame update
@@ -22,7 +23,11 @@ public class CarController : MonoBehaviour
         if (gameManager.gameStarted)
         {
             MoveCar();
-
+            if (firstTap)
+            {
+                firstTap = false;
+                return;
+            }
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 RotateCar();
