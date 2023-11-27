@@ -2,10 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StatisticsManager
+public class StatisticsManager : MonoBehaviour
 {
+    public static StatisticsManager instance;
     private int currentScore = 0;
     private int bestScore = 0;
+
+    private void Awake()
+    {
+        if (instance == null)
+            instance = this;
+    }
 
     public int getScore()
     {

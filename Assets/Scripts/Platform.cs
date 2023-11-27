@@ -5,11 +5,13 @@ using UnityEngine;
 public class Platform : MonoBehaviour
 {
     private GameManager gameManager;
+    private StatisticsManager statisticsManager;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameManager.instance;
+        statisticsManager = StatisticsManager.instance;
     }
 
     // Update is called once per frame
@@ -28,8 +30,8 @@ public class Platform : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            gameManager.statistics.increaseScore(1);
-            Debug.Log(gameManager.statistics.getScore());
+            statisticsManager.increaseScore(1);
+            Debug.Log(statisticsManager.getScore());
         }
     }
 
