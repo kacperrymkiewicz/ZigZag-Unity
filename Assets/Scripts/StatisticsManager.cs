@@ -7,8 +7,9 @@ public class StatisticsManager : MonoBehaviour
 {
     public static StatisticsManager instance;
     private int currentScore = 0;
-    private int bestScore = 0;
     public TMP_Text currentScoreText;
+    public TMP_Text resultScoreText;
+    public TMP_Text resultBestScoreText;
 
     private void Awake()
     {
@@ -23,7 +24,7 @@ public class StatisticsManager : MonoBehaviour
 
     public int getBestScore()
     {
-        return bestScore;
+        return PlayerPrefs.GetInt("bestScore");
     }
 
     public void increaseScore(int value)
@@ -31,10 +32,23 @@ public class StatisticsManager : MonoBehaviour
         currentScore += value;
         currentScoreText.text = currentScore.ToString();
 
-        if (currentScore > bestScore)
+        if(PlayerPrefs.HasKey("bestScore"))
         {
-            bestScore = currentScore;
+            if (currentScore > PlayerPrefs.GetInt("bestScore"))
+            {
+                PlayerPrefs.SetInt("bestScore", currentScore);
+            }
         }
+        else
+        {
+            PlayerPrefs.SetInt("bestScore", currentScore);
+        }
+    }
+
+    public void saveScore()
+    {
+        resultScoreText.text = "Wynik: " + getScore();
+        resultBestScoreText.text = "Najlepszy wynik: " + getBestScore();
     }
 
     public void resetScore()
