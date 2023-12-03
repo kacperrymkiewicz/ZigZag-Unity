@@ -30,13 +30,16 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!gameStarted)
+        if(!PauseMenu.isPaused)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (!gameStarted)
             {
-                GameStart();
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    GameStart();
+                }
             }
-        }   
+        }
     }
 
     public void GameStart()

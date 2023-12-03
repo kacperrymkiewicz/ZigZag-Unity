@@ -20,7 +20,7 @@ public class CarController : MonoBehaviour
     {
         //Debug.Log("rotated: " + rotated.ToString());
         //Debug.Log("first input: " + firstInput.ToString());
-        if (gameManager.gameStarted)
+        if (gameManager.gameStarted && !PauseMenu.isPaused)
         {
             MoveCar();
             if (firstTap)
