@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
     private StatisticsManager statisticsManager;
+    private AudioManager audioManager;
     public GameObject platformGenerator;
     public GameObject beginPanel;
     public GameObject scorePanel;
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         statisticsManager = StatisticsManager.instance;
+        audioManager = AudioManager.instance;
     }
 
     // Update is called once per frame
@@ -44,6 +46,7 @@ public class GameManager : MonoBehaviour
         beginPanel.SetActive(false);
         scorePanel.SetActive(false);
         statisticsManager.currentScoreText.gameObject.SetActive(true);
+        audioManager.playGameStartSound();
     }
 
     public void GameOver()
@@ -52,6 +55,7 @@ public class GameManager : MonoBehaviour
         statisticsManager.currentScoreText.gameObject.SetActive(false);
         statisticsManager.saveScore();
         scorePanel.SetActive(true);
+        audioManager.playGameOverSound();
         Invoke("RestartGame", 4f);
     }
 

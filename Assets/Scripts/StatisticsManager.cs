@@ -6,6 +6,7 @@ using UnityEngine;
 public class StatisticsManager : MonoBehaviour
 {
     public static StatisticsManager instance;
+    private AudioManager audioManager;
     private int currentScore = 0;
     public TMP_Text currentScoreText;
     public TMP_Text resultScoreText;
@@ -15,6 +16,11 @@ public class StatisticsManager : MonoBehaviour
     {
         if (instance == null)
             instance = this;
+    }
+
+    void Start()
+    {
+        audioManager = AudioManager.instance;
     }
 
     public int getScore()
@@ -31,6 +37,10 @@ public class StatisticsManager : MonoBehaviour
     {
         currentScore += value;
         currentScoreText.text = currentScore.ToString();
+        if (currentScore % 10 == 0)
+        {
+            audioManager.playGameMilestoneSound();
+        }
 
         if(PlayerPrefs.HasKey("bestScore"))
         {
